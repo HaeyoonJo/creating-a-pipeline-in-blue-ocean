@@ -24,5 +24,15 @@ pipeline {
       }
     }
 
+    stage('Dliver') {
+      steps {
+        sh './jenkins/scripts/devlier.sh'
+        echo 'Running deliver script in Deliver stage'
+        input 'Finished using the web site? (Click "Proceed" to continue)'
+        sh './jenkins/scripts/kill.sh'
+        echo 'Kill the application after click the "Process" button'
+      }
+    }
+
   }
 }
